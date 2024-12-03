@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>{{ data && data.officerId ? 'Редактировать сотрудника' : 'Добавить сотрудника' }}</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Фамилия</mat-label>
+    <input matInput [(ngModel)]="data.lastName" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Имя</mat-label>
+    <input matInput [(ngModel)]="data.firstName" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Отчество</mat-label>
+    <input matInput [(ngModel)]="data.middleName" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Должность</mat-label>
+    <input matInput [(ngModel)]="data.position" />
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Отмена</button>
+  <button mat-button color="primary" (click)="onSave()">Сохранить</button>
+</div>

@@ -1,0 +1,48 @@
+/* Главный контейнер */
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Занимает всю высоту экрана */
+}
+
+/* Стили для шапки */
+header {
+  width: 100%;
+}
+
+/* Навигация в шапке */
+nav a {
+  text-decoration: none;
+  color: white;
+  margin-right: 16px;
+}
+
+  nav a.active {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+/* Промежуток между элементами */
+.spacer {
+  flex: 1;
+}
+
+/* Контентная область */
+.content {
+  flex: 1; /* Занимает всё доступное пространство между шапкой и футером */
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+/* Стили футера */
+.footer {
+  position: relative;
+  width: 100%;
+}
+
+.mat-toolbar {
+  justify-content: space-between;
+  padding: 0 16px;
+}

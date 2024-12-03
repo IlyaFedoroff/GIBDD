@@ -1,0 +1,56 @@
+<div class="container">
+  <h1>Список осмотров</h1>
+
+  <button mat-raised-button color="primary" (click)="openAddInspection()">Добавить осмотр</button>
+
+  <mat-table [dataSource]="inspections" class="mat-elevation-z8">
+    <!-- Инспектор -->
+    <ng-container matColumnDef="officerName">
+      <mat-header-cell *matHeaderCellDef> Инспектор </mat-header-cell>
+      <mat-cell *matCellDef="let inspection"> {{ inspection.officerName }} </mat-cell>
+    </ng-container>
+
+    <!-- Владелец -->
+    <ng-container matColumnDef="ownerFullName">
+      <mat-header-cell *matHeaderCellDef> Владелец </mat-header-cell>
+      <mat-cell *matCellDef="let inspection"> {{ inspection.ownerFullName }} </mat-cell>
+    </ng-container>
+
+    <!-- Марка автомобиля -->
+    <ng-container matColumnDef="carBrand">
+      <mat-header-cell *matHeaderCellDef> Марка авто </mat-header-cell>
+      <mat-cell *matCellDef="let inspection"> {{ inspection.carBrand }} </mat-cell>
+    </ng-container>
+
+    <!-- Госномер автомобиля -->
+    <ng-container matColumnDef="licensePlate">
+      <mat-header-cell *matHeaderCellDef> Госномер </mat-header-cell>
+      <mat-cell *matCellDef="let inspection"> {{ inspection.licensePlate }} </mat-cell>
+    </ng-container>
+
+    <!-- Дата осмотра -->
+    <ng-container matColumnDef="inspectionDate">
+      <mat-header-cell *matHeaderCellDef> Дата осмотра </mat-header-cell>
+      <mat-cell *matCellDef="let inspection"> {{ inspection.inspectionDate | date:'dd.MM.yyyy' }} </mat-cell>
+    </ng-container>
+
+    <!-- Результат -->
+    <ng-container matColumnDef="result">
+      <mat-header-cell *matHeaderCellDef> Результат </mat-header-cell>
+      <mat-cell *matCellDef="let inspection"> {{ inspection.result }} </mat-cell>
+    </ng-container>
+
+    <!-- Колонка действий (удаление) -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef> Действия </mat-header-cell>
+      <mat-cell *matCellDef="let inspection">
+        <!-- Кнопка удаления -->
+        
+        <button mat-mini-fab color="warn" (click)="deleteInspection(inspection.inspectionId)" matTooltip="Удалить"></button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

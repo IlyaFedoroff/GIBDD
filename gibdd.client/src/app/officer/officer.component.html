@@ -1,0 +1,48 @@
+<div class="container">
+  <h1>Список сотрудников</h1>
+  <button mat-raised-button color="primary" (click)="addOfficer()">Добавить сотрудника</button>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <mat-table [dataSource]="officers" class="mat-elevation-z8">
+
+    <!-- Фамилия -->
+    <ng-container matColumnDef="lastName">
+      <mat-header-cell *matHeaderCellDef> Фамилия </mat-header-cell>
+      <mat-cell *matCellDef="let officer"> {{ officer.lastName }} </mat-cell>
+    </ng-container>
+
+    <!-- Имя -->
+    <ng-container matColumnDef="firstName">
+      <mat-header-cell *matHeaderCellDef> Имя </mat-header-cell>
+      <mat-cell *matCellDef="let officer"> {{ officer.firstName }} </mat-cell>
+    </ng-container>
+
+    <!-- Отчество -->
+    <ng-container matColumnDef="middleName">
+      <mat-header-cell *matHeaderCellDef> Отчество </mat-header-cell>
+      <mat-cell *matCellDef="let officer"> {{ officer.middleName }} </mat-cell>
+    </ng-container>
+
+    <!-- Должность -->
+    <ng-container matColumnDef="position">
+      <mat-header-cell *matHeaderCellDef> Должность </mat-header-cell>
+      <mat-cell *matCellDef="let officer"> {{ officer.position }} </mat-cell>
+    </ng-container>
+
+    <!-- Действия -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef> Действия </mat-header-cell>
+      <mat-cell *matCellDef="let officer">
+        <button mat-mini-fab color="primary" (click)="editOfficer(officer)" matTooltip="Редактировать"></button>
+        <button mat-mini-fab color="warn" (click)="deleteOfficer(officer.officerId)" matTooltip="Удалить"></button>
+
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

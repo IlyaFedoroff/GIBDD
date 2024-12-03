@@ -1,0 +1,27 @@
+# Node.js / Angular
+node_modules/
+npm-debug.log
+yarn-error.log
+dist/
+*.log
+package-lock.json
+*.tgz
+
+# ASP.NET Core
+bin/
+obj/
+.vs/
+.vscode/
+
+# IDEs and editors
+.idea/
+*.swp
+*.swo
+*.user
+*.suo
+*.ntvs_analysis.dat
+*.vspscc
+
+# OS generated files
+.DS_Store
+Thumbs.db

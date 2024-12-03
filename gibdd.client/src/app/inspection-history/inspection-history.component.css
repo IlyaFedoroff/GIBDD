@@ -1,0 +1,24 @@
+.inspection-history {
+  margin-top: 20px;
+}
+
+.error-message {
+  color: red;
+}
+
+.mat-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+  .mat-table th, .mat-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  .mat-table th {
+    text-align: left;
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }

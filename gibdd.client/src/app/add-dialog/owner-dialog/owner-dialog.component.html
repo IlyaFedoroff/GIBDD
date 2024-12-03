@@ -1,0 +1,38 @@
+<h1 mat-dialog-title>{{ data && data.ownerId ? 'Редактировать владельца' : 'Добавить владельца' }}</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Номер водительского удостоверения</mat-label>
+    <input matInput [(ngModel)]="data.driverLicenseNumber" required>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Имя</mat-label>
+    <input matInput [(ngModel)]="data.firstName" required>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Фамилия</mat-label>
+    <input matInput [(ngModel)]="data.lastName" required>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Отчество</mat-label>
+    <input matInput [(ngModel)]="data.middleName">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Адрес</mat-label>
+    <input matInput [(ngModel)]="data.address" required>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Год рождения</mat-label>
+    <input matInput type="number" [(ngModel)]="data.birthYear" required>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Пол</mat-label>
+    <mat-select [(ngModel)]="data.gender">
+      <mat-option value="Male">Мужской</mat-option>
+      <mat-option value="Female">Женский</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Отмена</button>
+  <button mat-button [mat-dialog-close]="data" color="primary">Сохранить</button>
+</div>

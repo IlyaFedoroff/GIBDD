@@ -1,0 +1,27 @@
+<div class="container">
+  <header>
+    <mat-toolbar color="primary">
+      <span>АвтоКонтроль</span>
+      <span class="spacer"></span>
+      <nav>
+        <a mat-button routerLink="/owners" routerLinkActive="active">Владельцы</a>
+        <a mat-button routerLink="/cars" routerLinkActive="active">Автомобили</a>
+        <a mat-button routerLink="/officers" routerLinkActive="active">Инспекторы</a>
+        <a mat-button routerLink="/inspections" routerLinkActive="active">Осмотры</a>
+      </nav>
+    </mat-toolbar>
+  </header>
+
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+
+  <footer class="footer">
+    <mat-toolbar color="primary">
+      <span>© 2024 АвтоКонтроль. Все права защищены.</span>
+      <span class="spacer"></span>
+      <a mat-button href="https://example.com/privacy-policy" target="_blank">Политика конфиденциальности</a>
+      <a mat-button href="https://example.com/terms" target="_blank">Условия использования</a>
+    </mat-toolbar>
+  </footer>
+</div>

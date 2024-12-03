@@ -1,0 +1,67 @@
+<div class="container">
+  <h1>Список автомобилей</h1>
+  <button mat-raised-button color="primary" (click)="addCar()">Добавить автомобиль</button>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <mat-table [dataSource]="cars" class="mat-elevation-z8">
+    <!-- Car Id -->
+    <ng-container matColumnDef="carId">
+      <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+      <mat-cell *matCellDef="let car"> {{ car.carId }} </mat-cell>
+    </ng-container>
+
+    <!-- License Plate -->
+    <ng-container matColumnDef="licensePlate">
+      <mat-header-cell *matHeaderCellDef> Лицензия </mat-header-cell>
+      <mat-cell *matCellDef="let car"> {{ car.licensePlate }} </mat-cell>
+    </ng-container>
+
+    <!-- Engine Number -->
+    <ng-container matColumnDef="engineNumber">
+      <mat-header-cell *matHeaderCellDef> Номер двигателя </mat-header-cell>
+      <mat-cell *matCellDef="let car"> {{ car.engineNumber }} </mat-cell>
+    </ng-container>
+
+    <!-- Color -->
+    <ng-container matColumnDef="color">
+      <mat-header-cell *matHeaderCellDef> Цвет </mat-header-cell>
+      <mat-cell *matCellDef="let car"> {{ car.color }} </mat-cell>
+    </ng-container>
+
+    <!-- Brand -->
+    <ng-container matColumnDef="brand">
+      <mat-header-cell *matHeaderCellDef> Марка </mat-header-cell>
+      <mat-cell *matCellDef="let car"> {{ car.brand }} </mat-cell>
+    </ng-container>
+
+    <!-- Technical Passport -->
+    <ng-container matColumnDef="technicalPassportNumber">
+      <mat-header-cell *matHeaderCellDef> Технический паспорт </mat-header-cell>
+      <mat-cell *matCellDef="let car"> {{ car.technicalPassportNumber }} </mat-cell>
+    </ng-container>
+
+    <!-- Manufacture Date -->
+    <ng-container matColumnDef="manufactureDate">
+      <mat-header-cell *matHeaderCellDef> Дата производства </mat-header-cell>
+      <mat-cell *matCellDef="let car"> {{ car.manufactureDate | date }} </mat-cell>
+    </ng-container>
+
+    <!-- Actions -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef> Действия </mat-header-cell>
+      <mat-cell *matCellDef="let car">
+        <button mat-mini-fab color="primary" (click)="editCar(car)" matTooltip="Редактировать"></button>
+        <button mat-mini-fab color="warn" (click)="deleteCar(car.carId)" matTooltip="Удалить"></button>
+        <button mat-mini-fab color="accent" (click)="viewHistory(car.carId)" matTooltip="История осмотров"></button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="['carId', 'licensePlate', 'engineNumber', 'color', 'brand', 'technicalPassportNumber', 'manufactureDate', 'actions']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['carId', 'licensePlate', 'engineNumber', 'color', 'brand', 'technicalPassportNumber', 'manufactureDate', 'actions'];"></mat-row>
+  </mat-table>
+</div>
+
+

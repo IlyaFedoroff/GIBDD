@@ -1,0 +1,105 @@
+<h1 mat-dialog-title>Добавление осмотра</h1>
+<div mat-dialog-content>
+  <form>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Автомобиль</mat-label>
+      <mat-select [(ngModel)]="inspection.carId" name="carId" required>
+        <mat-option *ngFor="let car of cars" [value]="car.carId">
+          {{ car.brand }} ({{ car.licensePlate }})
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Владелец</mat-label>
+      <mat-select [(ngModel)]="inspection.ownerId" name="ownerId" required>
+        <mat-option *ngFor="let owner of owners" [value]="owner.ownerId">
+          {{ owner.firstName }} {{ owner.lastName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Инспектор</mat-label>
+      <mat-select [(ngModel)]="inspection.officerId" name="officerId" required>
+        <mat-option *ngFor="let officer of officers" [value]="officer.officerId">
+          {{ officer.firstName }} {{ officer.lastName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Дата осмотра</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="inspection.inspectionDate" name="inspectionDate" required />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Результат</mat-label>
+      <input matInput [(ngModel)]="inspection.result" name="result" required />
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Отмена</button>
+  <button mat-button color="primary" (click)="onSubmit()">Добавить</button>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<form (ngSubmit)="submitInspection()">
+  <label for="car">Автомобиль:</label>
+  <select id="car" [(ngModel)]="inspection.carId" name="car" required>
+    <option *ngFor="let car of cars" [value]="car.carId">
+      {{ car.brand }} ({{ car.licensePlate }})
+    </option>
+  </select>
+
+  <label for="owner">Владелец:</label>
+  <select id="owner" [(ngModel)]="inspection.ownerId" name="owner" required>
+    <option *ngFor="let owner of owners" [value]="owner.ownerId">
+      {{ owner.firstName }} {{ owner.lastName }}
+    </option>
+  </select>
+
+  <label for="officer">Инспектор:</label>
+  <select id="officer" [(ngModel)]="inspection.officerId" name="officer" required>
+    <option *ngFor="let officer of officers" [value]="officer.officerId">
+      {{ officer.firstName }} {{ officer.lastName }}
+    </option>
+  </select>
+
+  <label for="date">Дата осмотра:</label>
+  <input id="date" type="date" [(ngModel)]="inspection.inspectionDate" name="date" required />
+
+  <label for="result">Результат:</label>
+  <input id="result" type="text" [(ngModel)]="inspection.result" name="result" required />
+
+  <button type="submit">Добавить осмотр</button>
+</form>-->

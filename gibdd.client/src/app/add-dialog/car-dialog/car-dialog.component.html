@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>{{ data && data.carId ? 'Редактировать автомобиль' : 'Добавить автомобиль' }}</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Марка автомобиля</mat-label>
+    <input matInput [(ngModel)]="data.brand" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Госномер</mat-label>
+    <input matInput [(ngModel)]="data.licensePlate" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Цвет</mat-label>
+    <input matInput [(ngModel)]="data.color" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Номер двигателя</mat-label>
+    <input matInput [(ngModel)]="data.engineNumber" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Дата выпуска</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="data.manufactureDate" name="manufactureDate" required />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Номер техпаспорта</mat-label>
+    <input matInput [(ngModel)]="data.technicalPassportNumber" />
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Отмена</button>
+  <button mat-button color="primary" (click)="onSave()">Сохранить</button>
+</div>

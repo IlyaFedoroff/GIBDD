@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>История осмотров автомобиля</h1>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <mat-table [dataSource]="inspections" class="mat-elevation-z8">
+    <ng-container matColumnDef="inspectionDate">
+      <mat-header-cell *matHeaderCellDef> Дата осмотра </mat-header-cell>
+      <mat-cell *matCellDef="let inspection"> {{ inspection.inspectionDate | date }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="result">
+      <mat-header-cell *matHeaderCellDef> Результат </mat-header-cell>
+      <mat-cell *matCellDef="let inspection"> {{ inspection.result }} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="['inspectionDate', 'result']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['inspectionDate', 'result'];"></mat-row>
+  </mat-table>
+</div>
