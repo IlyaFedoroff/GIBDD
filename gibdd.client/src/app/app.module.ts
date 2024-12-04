@@ -29,6 +29,8 @@ import { InspectionsComponent } from './inspections/inspections.component';
 import { AddInspectionComponent } from './add-dialog/add-inspection/add-inspection.component';
 import { InspectionHistoryComponent } from './inspection-history/inspection-history.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { HomeComponent } from './home/home.component';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     EditOfficerDialogComponent,
     InspectionsComponent,
     AddInspectionComponent,
-    InspectionHistoryComponent
+    InspectionHistoryComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
@@ -59,7 +62,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatNativeDateModule,
     MatIconModule,
     MatToolbarModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatGridListModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

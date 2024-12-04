@@ -1,3 +1,6 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
 <div class="container">
   <h1>Список автомобилей</h1>
   <button mat-raised-button color="primary" (click)="addCar()">Добавить автомобиль</button>
@@ -53,9 +56,15 @@
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef> Действия </mat-header-cell>
       <mat-cell *matCellDef="let car">
-        <button mat-mini-fab color="primary" (click)="editCar(car)" matTooltip="Редактировать"></button>
-        <button mat-mini-fab color="warn" (click)="deleteCar(car.carId)" matTooltip="Удалить"></button>
-        <button mat-mini-fab color="accent" (click)="viewHistory(car.carId)" matTooltip="История осмотров"></button>
+        <button mat-mini-fab color="primary" (click)="editCar(car)" matTooltip="Редактировать">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-mini-fab color="warn" (click)="deleteCar(car.carId)" matTooltip="Удалить">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-mini-fab color="accent" (click)="viewHistory(car.carId)" matTooltip="История осмотров">
+          <mat-icon>history</mat-icon>
+        </button>
       </mat-cell>
     </ng-container>
 

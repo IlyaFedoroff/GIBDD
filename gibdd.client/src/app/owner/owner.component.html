@@ -1,3 +1,5 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <div class="container">
   <h1>Список владельцев</h1>
   <button mat-raised-button color="primary" (click)="addOwner()">Добавить владельца</button>
@@ -27,9 +29,15 @@
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef> Действия </mat-header-cell>
       <mat-cell *matCellDef="let owner">
-        <button mat-mini-fab color="primary" (click)="editOwner(owner)" matTooltip="Редактировать"></button>
-        <button mat-mini-fab color="warn" (click)="deleteOwner(owner.ownerId!)" matTooltip="Удалить"></button>
+        <!-- Кнопка для редактирования с иконкой -->
+        <button mat-mini-fab color="primary" (click)="editOwner(owner)" matTooltip="Редактировать">
+          <mat-icon>edit</mat-icon>
+        </button>
 
+        <!-- Кнопка для удаления с иконкой -->
+        <button mat-mini-fab color="warn" (click)="deleteOwner(owner.ownerId!)" matTooltip="Удалить">
+          <mat-icon>delete</mat-icon>
+        </button>
       </mat-cell>
     </ng-container>
 

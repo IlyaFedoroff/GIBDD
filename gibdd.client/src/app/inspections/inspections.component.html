@@ -1,7 +1,11 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <div class="container">
   <h1>Список осмотров</h1>
 
-  <button mat-raised-button color="primary" (click)="openAddInspection()">Добавить осмотр</button>
+  <div class="button-container">
+    <button mat-raised-button color="primary" (click)="openAddInspection()">Добавить осмотр</button>
+  </div>
 
   <mat-table [dataSource]="inspections" class="mat-elevation-z8">
     <!-- Инспектор -->
@@ -45,8 +49,10 @@
       <mat-header-cell *matHeaderCellDef> Действия </mat-header-cell>
       <mat-cell *matCellDef="let inspection">
         <!-- Кнопка удаления -->
-        
-        <button mat-mini-fab color="warn" (click)="deleteInspection(inspection.inspectionId)" matTooltip="Удалить"></button>
+
+        <button mat-mini-fab color="warn" (click)="deleteInspection(inspection.inspectionId)" matTooltip="Удалить">
+          <mat-icon>delete</mat-icon>
+        </button>
       </mat-cell>
     </ng-container>
 

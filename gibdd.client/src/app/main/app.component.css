@@ -1,21 +1,38 @@
+
+
 /* Главный контейнер */
 .container {
   display: flex;
   flex-direction: column;
   min-height: 100vh; /* Занимает всю высоту экрана */
+  font-family: 'Roboto', sans-serif; /* Глобальный шрифт */
+  background-color: #fafafa; /* Светлый фон для контента */
 }
 
 /* Стили для шапки */
 header {
   width: 100%;
+  background-color: #3f51b5; /* Темный синий цвет */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень под шапкой */
 }
 
-/* Навигация в шапке */
+mat-toolbar {
+  padding: 10px 16px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
 nav a {
   text-decoration: none;
   color: white;
   margin-right: 16px;
+  transition: color 0.3s ease;
 }
+
+  nav a:hover {
+    color: #ffeb3b; /* Желтый цвет при наведении */
+  }
 
   nav a.active {
     font-weight: bold;
@@ -32,17 +49,55 @@ nav a {
   flex: 1; /* Занимает всё доступное пространство между шапкой и футером */
   display: flex;
   flex-direction: column;
-  padding: 16px;
+  padding: 32px 16px;
   box-sizing: border-box;
+  background-color: #ffffff; /* Белый фон для контента */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Легкая тень */
+  border-radius: 8px;
+  margin-top: 20px; /* Отступ сверху */
 }
+
+  .content h1 {
+    font-size: 32px;
+    margin-bottom: 16px;
+    color: #333333;
+  }
+
+  .content p {
+    font-size: 18px;
+    color: #555555;
+    line-height: 1.6;
+  }
 
 /* Стили футера */
 .footer {
-  position: relative;
   width: 100%;
+  background-color: #3f51b5; /* Темный синий цвет */
+  color: white;
 }
 
-.mat-toolbar {
-  justify-content: space-between;
-  padding: 0 16px;
+  .footer mat-toolbar {
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .footer a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease;
+  }
+
+    .footer a:hover {
+      color: #ffeb3b; /* Желтый цвет при наведении */
+    }
+
+  .footer .spacer {
+    flex: 1;
+  }
+
+/* Стили для кнопок и активных ссылок */
+.mat-button {
+  text-transform: none; /* Убираем заглавные буквы */
 }
+

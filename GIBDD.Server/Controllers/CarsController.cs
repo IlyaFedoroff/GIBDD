@@ -154,7 +154,7 @@ namespace GIBDD.Server.Controllers
                 Console.WriteLine("не нашли авто:(");
                 return NotFound();
             }
-            
+
             _context.Cars.Remove(car);
             Console.WriteLine("нашли и пытаемся удалить");
             await _context.SaveChangesAsync();
@@ -192,40 +192,69 @@ namespace GIBDD.Server.Controllers
         }
 
 
+        [HttpPost("seed")]
+        public IActionResult SeedData()
+        {
+            if (!_context.Cars.Any())
+            {
+                var cars = new List<Car>
+            {
+                new Car { LicensePlate = "A123BC", EngineNumber = "EN123456789", Color = "Red", Brand = "Toyota", TechnicalPassportNumber = "TP123456789", ManufactureDate = new DateTime(2020, 5, 15) },
+                new Car { LicensePlate = "B234CD", EngineNumber = "EN234567890", Color = "Blue", Brand = "Honda", TechnicalPassportNumber = "TP234567890", ManufactureDate = new DateTime(2021, 6, 20) },
+                new Car { LicensePlate = "C345DE", EngineNumber = "EN345678901", Color = "Black", Brand = "BMW", TechnicalPassportNumber = "TP345678901", ManufactureDate = new DateTime(2019, 4, 10) },
+                new Car { LicensePlate = "D456EF", EngineNumber = "EN456789012", Color = "White", Brand = "Mercedes", TechnicalPassportNumber = "TP456789012", ManufactureDate = new DateTime(2022, 7, 5) },
+                new Car { LicensePlate = "E567FG", EngineNumber = "EN567890123", Color = "Gray", Brand = "Audi", TechnicalPassportNumber = "TP567890123", ManufactureDate = new DateTime(2018, 3, 30) },
+                new Car { LicensePlate = "F678GH", EngineNumber = "EN678901234", Color = "Green", Brand = "Volkswagen", TechnicalPassportNumber = "TP678901234", ManufactureDate = new DateTime(2020, 11, 15) },
+                new Car { LicensePlate = "G789HI", EngineNumber = "EN789012345", Color = "Yellow", Brand = "Ford", TechnicalPassportNumber = "TP789012345", ManufactureDate = new DateTime(2017, 2, 25) },
+                new Car { LicensePlate = "H890IJ", EngineNumber = "EN890123456", Color = "Pink", Brand = "Chevrolet", TechnicalPassportNumber = "TP890123456", ManufactureDate = new DateTime(2021, 8, 10) },
+                new Car { LicensePlate = "I901JK", EngineNumber = "EN901234567", Color = "Purple", Brand = "Nissan", TechnicalPassportNumber = "TP901234567", ManufactureDate = new DateTime(2016, 1, 20) },
+                new Car { LicensePlate = "J012KL", EngineNumber = "EN012345678", Color = "Orange", Brand = "Hyundai", TechnicalPassportNumber = "TP012345678", ManufactureDate = new DateTime(2023, 9, 5) }
+            };
+
+                _context.Cars.AddRange(cars);
+                _context.SaveChangesAsync();
+            }
+
+            return Ok("Data seeded successfully");
+        }
 
 
+        // Добавить несколько автомобилей
+        [HttpPost("mult")]
+        public async Task<ActionResult<IEnumerable<CarDto>>> PostCars(List<CarDto> carDtos)
+        {
+            if (carDtos == null || carDtos.Count == 0)
+            {
+                return BadRequest("No cars provided.");
+            }
 
-        //// История осмотров авто
-        //[HttpGet("{id}/history")]
-        //public async Task<ActionResult<IEnumerable<InspectionDto>>> GetCarInspectionHistory(int id)
-        //{
-        //    // Проверяем, существует ли автомобиль с данным ID
-        //    var carExists = await _context.Cars.AnyAsync(c => c.CarId == id);
-        //    if (!carExists)
-        //    {
-        //        return NotFound($"Автомобиль с ID {id} не найден.");
-        //    }
+            var cars = carDtos.Select(carDto => new Car
+            {
+                LicensePlate = carDto.LicensePlate,
+                EngineNumber = carDto.EngineNumber,
+                Color = carDto.Color,
+                Brand = carDto.Brand,
+                TechnicalPassportNumber = carDto.TechnicalPassportNumber,
+                ManufactureDate = DateTime.SpecifyKind(carDto.ManufactureDate, DateTimeKind.Utc),
+            }).ToList();
 
-        //    // Получаем осмотры, связанные с автомобилем
-        //    var inspections = await _context.Inspections
-        //        .Include(i => i.Officer) // Подгружаем данные о сотрудниках
-        //        .Include(i => i.Owner)  // Подгружаем данные о владельце
-        //        .Where(i => i.CarId == id)
-        //        .OrderByDescending(i => i.InspectionDate) // Сортировка по дате (от последнего)
-        //        .ToListAsync();
+            _context.Cars.AddRange(cars);
+            await _context.SaveChangesAsync();
 
-        //    // Конвертируем осмотры в DTO
-        //    var inspectionDtos = inspections.Select(i => new InspectionDto
-        //    {
-        //        InspectionId = i.InspectionId,
-        //        InspectionDate = i.InspectionDate,
-        //        Result = i.Result,
-        //        CarId = i.CarId,
-        //        OfficerId = i.Officer.OfficerId,
-        //        OwnerId = i.Owner.OwnerId
-        //    }).ToList();
+            // Создаем список DTO для возвращаемых автомобилей
+            var createdCarDtos = cars.Select(car => new CarDto
+            {
+                CarId = car.CarId,
+                LicensePlate = car.LicensePlate,
+                EngineNumber = car.EngineNumber,
+                Color = car.Color,
+                Brand = car.Brand,
+                TechnicalPassportNumber = car.TechnicalPassportNumber,
+                ManufactureDate = car.ManufactureDate
+            }).ToList();
 
-        //    return Ok(inspectionDtos);
-        //}
+            return CreatedAtAction(nameof(GetCar), new { id = createdCarDtos.First().CarId }, createdCarDtos);
+        }
+
     }
 }
