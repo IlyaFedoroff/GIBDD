@@ -11,10 +11,10 @@
 
   <mat-table [dataSource]="cars" class="mat-elevation-z8">
     <!-- Car Id -->
-    <ng-container matColumnDef="carId">
+    <!--<ng-container matColumnDef="carId">
       <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
       <mat-cell *matCellDef="let car"> {{ car.carId }} </mat-cell>
-    </ng-container>
+    </ng-container>-->
 
     <!-- License Plate -->
     <ng-container matColumnDef="licensePlate">
@@ -68,8 +68,8 @@
       </mat-cell>
     </ng-container>
 
-    <mat-header-row *matHeaderRowDef="['carId', 'licensePlate', 'engineNumber', 'color', 'brand', 'technicalPassportNumber', 'manufactureDate', 'actions']"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: ['carId', 'licensePlate', 'engineNumber', 'color', 'brand', 'technicalPassportNumber', 'manufactureDate', 'actions'];"></mat-row>
+    <mat-header-row *matHeaderRowDef="['licensePlate', 'engineNumber', 'color', 'brand', 'technicalPassportNumber', 'manufactureDate', 'actions']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['licensePlate', 'engineNumber', 'color', 'brand', 'technicalPassportNumber', 'manufactureDate', 'actions'];"></mat-row>
   </mat-table>
 </div>
 
