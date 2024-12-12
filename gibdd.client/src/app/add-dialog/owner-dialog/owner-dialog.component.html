@@ -18,11 +18,17 @@
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Адрес</mat-label>
-    <input matInput [(ngModel)]="data.address" required>
+    <mat-select [(ngModel)]="data.address" required>
+      <mat-option *ngFor="let address of availableAddresses" [value]="address">
+        {{ address }}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Год рождения</mat-label>
-    <input matInput type="number" [(ngModel)]="data.birthYear" required>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="data.birthYear" name="birthDate" required />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Пол</mat-label>

@@ -2,19 +2,27 @@
 <div mat-dialog-content>
   <mat-form-field appearance="fill">
     <mat-label>Марка автомобиля</mat-label>
-    <input matInput [(ngModel)]="data.brand" />
+    <mat-select [(ngModel)]="data.brand" required>
+      <mat-option *ngFor="let brand of availableBrands" [value]="brand">
+        {{ brand }}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Госномер</mat-label>
-    <input matInput [(ngModel)]="data.licensePlate" />
+    <input matInput [(ngModel)]="data.licensePlate" required />
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Цвет</mat-label>
-    <input matInput [(ngModel)]="data.color" />
+    <mat-select [(ngModel)]="data.color" required>
+      <mat-option *ngFor="let color of availableColors" [value]="color">
+        {{ color }}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Номер двигателя</mat-label>
-    <input matInput [(ngModel)]="data.engineNumber" />
+    <input matInput [(ngModel)]="data.engineNumber" required />
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Дата выпуска</mat-label>
@@ -24,7 +32,7 @@
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Номер техпаспорта</mat-label>
-    <input matInput [(ngModel)]="data.technicalPassportNumber" />
+    <input matInput [(ngModel)]="data.technicalPassportNumber" required />
   </mat-form-field>
 </div>
 <div mat-dialog-actions>

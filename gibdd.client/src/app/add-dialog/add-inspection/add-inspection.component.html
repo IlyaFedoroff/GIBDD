@@ -37,7 +37,11 @@
 
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Результат</mat-label>
-      <input matInput [(ngModel)]="inspection.result" name="result" required />
+      <mat-select [(ngModel)]="inspection.result" name="result" required>
+        <mat-option *ngFor="let result of availableResults" [value]="result">
+          {{ result }}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
   </form>
 </div>

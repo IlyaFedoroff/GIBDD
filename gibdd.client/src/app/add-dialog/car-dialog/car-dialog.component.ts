@@ -8,6 +8,39 @@ import { Car } from '../../models/Car';
   styleUrl: './car-dialog.component.css'
 })
 export class CarDialogComponent {
+  availableBrands: string[] = [
+    'АвтоВАЗ',
+    'ГАЗ',
+    'УАЗ',
+    'КамАЗ',
+    'Лада',
+    'Волга',
+    'ЗАЗ',
+    'Чери',
+    'Москвич',
+    'ИжАвто',
+    'Toyota',
+    'BMW',
+    'Mercedes-Benz',
+    'Audi',
+    'Volkswagen',
+    'Honda',
+    'Ford',
+    'Nissan',
+    'Hyundai',
+  ];
+  availableColors: string[] = [
+    'Красный',
+    'Синий',
+    'Зеленый',
+    'Черный',
+    'Белый',
+    'Серый',
+    'Желтый',
+    'Оранжевый'
+  ];
+
+
   constructor(
     public dialogRef: MatDialogRef<CarDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Car

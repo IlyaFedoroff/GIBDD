@@ -2,19 +2,23 @@
 <div mat-dialog-content>
   <mat-form-field appearance="fill">
     <mat-label>Фамилия</mat-label>
-    <input matInput [(ngModel)]="data.lastName" />
+    <input matInput [(ngModel)]="data.lastName" required/>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Имя</mat-label>
-    <input matInput [(ngModel)]="data.firstName" />
+    <input matInput [(ngModel)]="data.firstName" required/>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Отчество</mat-label>
-    <input matInput [(ngModel)]="data.middleName" />
+    <input matInput [(ngModel)]="data.middleName" required/>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Должность</mat-label>
-    <input matInput [(ngModel)]="data.position" />
+    <mat-select [(ngModel)]="data.position" required>
+      <mat-option *ngFor="let position of availablePositions" [value]="position">
+        {{ position }}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
 </div>
 <div mat-dialog-actions>

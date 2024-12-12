@@ -19,9 +19,15 @@ export class AddInspectionComponent implements OnInit {
     carId: 1,
     ownerId: 1,
     officerId: 1,
-    inspectionDate: '2077-07-07',
+    inspectionDate: '',
     result: 'Passed'
   };
+  availableResults: string[] = [
+    'Прошел осмотр',
+    'Не прошел осмотр',
+    'Неявка на осмотр',
+    'Не требуется осмотр'
+  ];
 
   cars: Car[] = [];
   owners: Owner[] = [];

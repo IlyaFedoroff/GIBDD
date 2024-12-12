@@ -14,6 +14,9 @@ export class CarsComponent implements OnInit {
   cars: Car[] = [];
   errorMessage: string | null = null;
 
+  
+
+
   constructor(private carService: CarService, private dialog: MatDialog, private router: Router) { }
 
   ngOnInit(): void {
@@ -61,6 +64,9 @@ export class CarsComponent implements OnInit {
       }
     });
   }
+
+
+
   
 
   deleteCar(carId: number): void {
