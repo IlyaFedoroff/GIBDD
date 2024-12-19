@@ -9,7 +9,7 @@
         public string? MiddleName { get; set; }
         public string DriverLicenseNumber { get; set; } = null!;
         public string Address { get; set; } = null!;
-        public int BirthYear { get; set; }
+        public DateTime BirthYear { get; set; }
         public string Gender { get; set; } = null!;
     }
 }

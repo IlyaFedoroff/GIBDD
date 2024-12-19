@@ -5,6 +5,6 @@ export interface Owner {
   middleName: string;
   driverLicenseNumber: string;
   address: string;
-  birthYear: number; // maybe datetime??
+  birthYear: string; // maybe datetime??
   gender: string
 }

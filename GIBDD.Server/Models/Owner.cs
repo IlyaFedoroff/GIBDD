@@ -19,7 +19,7 @@ namespace GIBDD.Server.Models
         [Required]
         public string Address { get; set; } = null!;
         [Required]
-        public int BirthYear { get; set; }
+        public DateTime BirthYear { get; set; }
         [Required]
         public string Gender { get; set; } = null!;
         [JsonIgnore]

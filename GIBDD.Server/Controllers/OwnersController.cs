@@ -84,7 +84,7 @@ namespace GIBDD.Server.Controllers
                 LastName = ownerDto.LastName,
                 MiddleName = ownerDto.MiddleName,
                 Address = ownerDto.Address,
-                BirthYear = ownerDto.BirthYear,
+                BirthYear = DateTime.SpecifyKind(ownerDto.BirthYear, DateTimeKind.Utc),
                 Gender = ownerDto.Gender
             };
 
@@ -98,7 +98,7 @@ namespace GIBDD.Server.Controllers
                 DriverLicenseNumber = owner.DriverLicenseNumber,
                 FirstName = owner.FirstName,
                 LastName = owner.LastName,
-                MiddleName = owner.LastName,
+                MiddleName = owner.MiddleName,
                 Address = owner.Address,
                 BirthYear = owner.BirthYear,
                 Gender = owner.Gender

@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  client:
+    build:
+      context: ./gibdd.client  # Указываем контекст как папку с клиентом
+      dockerfile: Dockerfile    # Указываем путь к Dockerfile внутри папки client
+    volumes:
+      - ./gibdd.client:/app     # Монтируем папку client на контейнер
+    ports:
+      - "4200:4200"             # Пример, если это Angular приложение, запускаем на порту 4200
+
+  server:
+    build:
+      context: ./GIBDD.Server  # Указываем контекст как папку с сервером
+      dockerfile: Dockerfile   # Указываем путь к Dockerfile внутри папки server
+    ports:
+      - "5000:5000"            # Пример порта для сервера
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
