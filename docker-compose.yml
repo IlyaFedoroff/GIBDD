@@ -1,0 +1,40 @@
+services:
+  # сервис для angular (Nginx)
+  angular:
+    build:
+      context: ./gibdd.client
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+    # сервис для ASP.NET Core
+  backend:
+    build:
+      context: ./GIBDD.Server
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=CarInspectionDB;Username=postgres;Password=Lapka
+    depends_on:
+      - postgres
+    #command: >
+      #/bin/bash -c "until pg_isready -h postgres -p 5432; do echo 'Waiting for postgres...'; sleep 2; done && dotnet ef database update --no-build --environment Production && dotnet GIBDD.Server.dll"
+  # сервис базы данных postgresql
+  postgres:
+    image: postgres:14
+    restart: always
+    environment:
+      POSTGRES_DB: CarInspectionDB
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Lapka
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

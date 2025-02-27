@@ -1,13 +1,3 @@
-//export interface Inspection {
-//  inspectionId: number;
-//  date: Date;
-//  result: string;
-//  carBrand: string;
-//  licensePlate: string;
-//  officerName: string;
-//  ownerFullName: string;
-//}
-
 
 export interface AddInspection {
   carId: number;

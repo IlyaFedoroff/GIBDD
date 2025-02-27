@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Inspection, AddInspection } from '../../models/Inspection';
+import {environment} from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InspectionService {
-  private apiUrl = 'https://localhost:7048/api/inspections';
+  private apiUrl = `${environment.apiUrl}/inspections`;
+
   constructor(private http: HttpClient) { }
 
 

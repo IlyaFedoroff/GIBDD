@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'inspections', component: InspectionsComponent },
   { path: 'cars/:id/history', component: InspectionHistoryComponent },
   { path: 'home', component: HomeComponent },
-  {path: '', component: HomeComponent }
+  { path: '', component: HomeComponent },
 ];
 
 @NgModule({

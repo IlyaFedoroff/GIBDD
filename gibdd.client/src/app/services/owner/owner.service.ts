@@ -2,15 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Owner } from '../../models/Owner';
-
+import {environment} from '../../../environments/environment';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class OwnerService {
-
-  private apiUrl = "https://localhost:7048/api/owners";
+  private apiUrl = `${environment.apiUrl}/owners`;
 
   constructor(private http: HttpClient) { }
 

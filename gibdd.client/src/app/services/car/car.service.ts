@@ -3,12 +3,12 @@ import { Car } from '../../models/Car';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { InspectionHistory } from '../../models/InspectionHistory';
-
+import {environment} from '../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class CarService {
-  private apiUrl = "https://localhost:7048/api/cars";
+  private apiUrl = `${environment.apiUrl}/cars`;
 
   constructor(private http: HttpClient) { }
 
